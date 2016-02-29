@@ -14,10 +14,10 @@
 #define SAMPLE_RATE		48000
 
 // Time in seconds for each count average to be output
-#define OUTPUT_RATE		30	
+#define OUTPUT_RATE		60	
 
 // Comparator threshold for triggering
-#define THRESHOLD		2000
+#define THRESHOLD		3500
 
 #ifndef elemof
 #define elemof(a) 	((sizeof(a) / sizeof((a)[0])))
@@ -71,11 +71,13 @@ int main(int argc, char **argv)
 			last_comp_counter = comp_counter;
 			last_sample_counter = sample_counter;
 
-			printf("%lu %.2f %.1f %lu %d\n", time(NULL), rate, rate*60, comp_counter, comp_threshold);
+			fprintf(stdout, "%lu %.2f %.1f %lu %d\n", time(NULL), rate, rate*60, comp_counter, comp_threshold);
+			fflush(stdout);
 		}
-		//printf("%d %.2f %d %d %d\n", comp_counter, rate, min, max, ret);
+		//fprintf(stdout, "%d %.2f %d %d %d\n", comp_counter, rate, min, max, ret);
+		//fflush(stdout);
 	}
-	printf("Exit!\n");
+	fprintf(stderr, "Exit!\n");
 	return 0;
 }
 

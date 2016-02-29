@@ -1,0 +1,4 @@
+host ftpserver.com
+user username
+pass password
+directory /website/img
