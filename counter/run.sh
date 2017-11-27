@@ -11,7 +11,7 @@ DETECTOR_TYPE="Scionix 38B57/1.5M PMT + 38x38mm NaI(Tl)"
 
 # Make a gnuplot command file
 cat << EOF > plot.gp
-set term png font arial 10 size 768,480
+set term png font arial 12 size 1280,640
 set output 'latest_radiation.png'
 
 set xdata time
@@ -19,8 +19,9 @@ set timefmt '%s'
 set format x "%H:%M\n%m-%d"
 set grid 
 
-set title "Radiation Level in $LOCATION.\n$DETECTOR_TYPE"
+set title "Radiation Level in $LOCATION\n$DETECTOR_TYPE"
 set ylabel 'Counts / min'
+set xlabel 'UTC Time'
 
 plot 'latest.log' using 1:3 with lines title 'Detector #1' lw 2
 EOF

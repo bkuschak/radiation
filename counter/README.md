@@ -13,6 +13,11 @@ The code at this point uses only 2% CPU on a RasPi.
 -----
 INSTALLATION
 
+Install ncftp if necessary:
+
+	apt-get update
+	apt-get install ncftp
+
 Create a file called login.txt that contains you FTP login credentials, like this:
 
 	host ftpserver.com
@@ -22,6 +27,10 @@ Create a file called login.txt that contains you FTP login credentials, like thi
 
 Run the script run.sh to do everything automatically.  It logs the data periodically into 
 a logfile (of unlimited length!) and generates daily plots, uploading those to a website.
+
+To have this program start at boot, add a line to /etc/rc.local:
+
+	(cd /<path_to_this_directory>/git/radiation/counter && ./run.sh) &
 
 -----
 
