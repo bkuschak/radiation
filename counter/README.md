@@ -1,5 +1,8 @@
 This is a simple command line app to track counts/min from a scintillation 
 probe.  Meant for use on Beaglebone Black or Raspberry PI, as a continuous monitor.
+Here is an example of a daily plot when things are quiet. (The slow drift is temperature-related.)
+
+![Daily Radiation Plot](latest_radiation.png?raw=true "Daily Radiation Plot")
 
 Setup:
 - I'm using the Theremino PMT adapter with a PMT/scintillator
