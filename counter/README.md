@@ -6,12 +6,12 @@ Here is an example of a daily plot when things are quiet. (The slow drift is tem
 
 Setup:
 - I'm using the Theremino PMT adapter with a PMT/scintillator
-- Use the USB audio device that comes with Theremino.
-- Old Raspberry Pi and externally powered USB hub. 
+- USB audio device that comes with Theremino
+- Beaglebone Black
 
 We use the ALSA utility program arecord to grab raw samples and then process them.
 
-The code at this point uses only 2% CPU on a RasPi.
+The code uses only 2% CPU on a RasPi and a bit less on a Beaglebone.
 
 -----
 INSTALLATION
@@ -42,7 +42,3 @@ arecord -f S16_LE -c 1 -r 48000  -t raw -D hw:1,0 | ./counter
 
 To inspect raw samples, you can do this: 
 arecord -f S16_LE -c 1 -r 48000  -t raw -d 1 -D hw:1,0 |hexdump
-
-
-
-
