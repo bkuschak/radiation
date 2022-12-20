@@ -1,14 +1,21 @@
 This is a simple command line app to track counts/min from a scintillation 
-probe.  Meant for use on Beaglebone Black or Raspberry PI, as a continuous monitor.
+probe.  It is meant for use as a continuous monitor, running on a Beaglebone Black or Raspberry PI.
+
+Below is a daily plot on a day with several passing thunderstorms.
+The radiation spikes are due to a phenomenon called radon washout. The slow drift is temperature-related.
+(The rain gauge was offline, so no data is available for rain rate in inches/hour).
+
+![Daily Radiation Plot](daily_radiation_070322.jpg?raw=true "Daily Radiation Plot")
 
 Setup:
-- I'm using the Theremino PMT adapter with a PMT/scintillator
-- Use the USB audio device that comes with Theremino.
-- Old Raspberry Pi and externally powered USB hub. 
+- Theremino PMT adapter
+- PMT + scintillator: Scionix 38B57/1.5M + 38x38mm NaI(Tl)
+- USB audio device that comes with Theremino
+- Beaglebone Black
 
-We use the ALSA utility program arecord to grab raw samples and then process them.
+The ALSA utility program 'arecord' is used to grab raw samples. A simple program then filters them and logs the data.
 
-The code at this point uses only 2% CPU on a RasPi.
+The code uses only 2% CPU on a RasPi and a bit less on a Beaglebone.
 
 -----
 INSTALLATION
@@ -39,7 +46,3 @@ arecord -f S16_LE -c 1 -r 48000  -t raw -D hw:1,0 | ./counter
 
 To inspect raw samples, you can do this: 
 arecord -f S16_LE -c 1 -r 48000  -t raw -d 1 -D hw:1,0 |hexdump
-
-
-
-
