@@ -5,7 +5,7 @@ Below is a daily plot on a day with several passing thunderstorms.
 The radiation spikes are due to a phenomenon called radon washout. The slow drift is temperature-related.
 (The rain gauge was offline, so no data is available for rain rate in inches/hour).
 
-![Daily Radiation Plot](daily_radiation_070322.jpg?raw=true "Daily Radiation Plot")
+![Daily Radiation Plot](/counter/daily_radiation_070322.jpg?raw=true "Daily Radiation Plot")
 
 Setup:
 - Theremino PMT adapter
@@ -42,7 +42,10 @@ To have this program start at boot, add a line to /etc/rc.local:
 -----
 
 For simple testing, you can just run the counter program like this:
+```
 arecord -f S16_LE -c 1 -r 48000  -t raw -D hw:1,0 | ./counter
-
+```
 To inspect raw samples, you can do this: 
+```
 arecord -f S16_LE -c 1 -r 48000  -t raw -d 1 -D hw:1,0 |hexdump
+```
