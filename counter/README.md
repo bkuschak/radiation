@@ -1,5 +1,5 @@
 This is a simple command line app to track counts/min from a scintillation 
-probe.  It is meant for use as a continuous monitor, running on a Beaglebone Black or Raspberry PI.
+probe.  It is meant for use as a continuous monitor, running on a Beaglebone Black or Raspberry Pi.
 
 Below is a daily plot on a day with several passing thunderstorms.
 The radiation spikes are due to a phenomenon called radon washout. The slow drift is temperature-related.
@@ -7,23 +7,23 @@ The radiation spikes are due to a phenomenon called radon washout. The slow drif
 
 ![Daily Radiation Plot](/counter/daily_radiation_070322.jpg?raw=true "Daily Radiation Plot")
 
-Setup:
+### COMPONENTS
 - Theremino PMT adapter
 - PMT + scintillator: Scionix 38B57/1.5M + 38x38mm NaI(Tl)
 - USB audio device that comes with Theremino
 - Beaglebone Black
 
-The ALSA utility program 'arecord' is used to grab raw samples. A simple program then filters them and logs the data.
+The ALSA utility program 'arecord' is used to grab raw samples. A simple program then filters them and logs the data. A script generates plots periodically and uploads them to a website.
 
-The code uses only 2% CPU on a RasPi and a bit less on a Beaglebone.
+The code uses only 2% CPU on an old RasPi or Beaglebone.
 
 -----
-INSTALLATION
+### INSTALLATION
 
-Install ncftp if necessary:
+Install prerequisites:
 
 	apt-get update
-	apt-get install ncftp
+	apt-get install alsa-utils gnuplot ncftp
 
 Create a file called login.txt that contains you FTP login credentials, like this:
 
